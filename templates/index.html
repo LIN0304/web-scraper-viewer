@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="file-list">
+  {% for md, js in pairs %}
+    <li>
+      <a href="{{ url_for('view_file', filename=md) }}">{{ md }}</a>
+      {% if js %} · <a href="{{ url_for('raw_file', filename=js) }}">JSON</a>{% endif %}
+      · <a href="{{ url_for('raw_file', filename=md) }}">Markdown</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
